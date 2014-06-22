@@ -20,7 +20,6 @@
 (defn pretty-print [tree]
   (s-rec tree 0))
 
-; TODO add in depth information
 (defn breadth-first [trees]
   (cond
     (empty? trees) (println "finished")
