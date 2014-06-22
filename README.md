@@ -12,9 +12,6 @@ ugly, and not at all idiomatic.
 ### generate a tree diagram
 svg or pic might be useful
 
-### functional bfs
-Apparently this is simple with zippers.  Another way to do it would seemingly be
-to just pass a queue of nodes, so let's try both ways.  On closer inspection, the
-queue is a little tricky because 
+probably won't happen
 
 [0]: https://www.youtube.com/watch?v=j649Tr25RyA
