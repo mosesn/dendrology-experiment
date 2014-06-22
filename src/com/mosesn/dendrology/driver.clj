@@ -15,13 +15,12 @@
   (let [size (+ 25 (rand-int 25))]
     (make-tree size)))
 
-; TODO: this is recursive
 (defn io-number [tree number]
   (match tree
          {:name name
           :left left
-          :right right} (let [[left-num new-left] (io-number left (+ number 1))
-                              [right-num new-right] (io-number right (+ left-num 1))]
+          :right right} (let [[left-num new-left] (io-number left (inc number))
+                              [right-num new-right] (io-number right (inc left-num))]
                           [right-num {:name [name number]
                                :left new-left
                                :right new-right}])
@@ -31,4 +30,5 @@
   (io-number tree 0))
 
 (defn -main [& args]
-  (pretty-print (nth (in-order (construct-rand-tree)) 1)))
+  (print-bfs (nth (in-order (construct-rand-tree)) 1)))
+;  (pretty-print (nth (in-order (construct-rand-tree)) 1)))

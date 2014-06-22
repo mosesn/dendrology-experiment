@@ -9,16 +9,12 @@ ugly, and not at all idiomatic.
 
 ## Next Steps
 
-### recur
-Since clojure doesn't automatically do tail call elimination, I need to
-understand how recur works and restructure all of my recursive methods to use
-that.
-
 ### generate a tree diagram
 svg or pic might be useful
 
 ### functional bfs
 Apparently this is simple with zippers.  Another way to do it would seemingly be
-to just pass a queue of nodes, so let's try both ways.
+to just pass a queue of nodes, so let's try both ways.  On closer inspection, the
+queue is a little tricky because 
 
 [0]: https://www.youtube.com/watch?v=j649Tr25RyA

@@ -7,18 +7,33 @@
 (defn position [i word]
   (str (tabify i) word))
 
-; TODO: this is recursive
 (defn s-rec [tree depth]
   (match tree
     {:name name
      :left left
      :right right} (do
-                     (s-rec left (+ depth 1))
-                     (println "\n")
+                     (s-rec left (inc depth))
                      (println (position depth name))
-                     (println "\n")
-                     (s-rec right (+ depth 1)))
+                     (s-rec right (inc depth)))
      :else (println (position depth tree))))
 
 (defn pretty-print [tree]
   (s-rec tree 0))
+
+; TODO add in depth information
+(defn breadth-first [trees]
+  (cond
+    (empty? trees) (println "finished")
+    :else (let [head (peek trees)]
+            (match head
+                   [{:name name
+                    :left left
+                    :right right} depth] (do
+                                    (println (position depth name))
+                                    (breadth-first (conj (conj (pop trees) [left (inc depth)]) [right (inc depth)])))
+                    [h depth] (do
+                            (println (position depth h))
+                            (breadth-first (pop trees)))))))
+
+(defn print-bfs [tree]
+  (breadth-first (conj clojure.lang.PersistentQueue/EMPTY [tree 0])))
